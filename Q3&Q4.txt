@@ -1,0 +1,44 @@
+Q3.
+
+prog2.java is better in terms of design consideration than prog1.java. prog2.java uses a private String, rather than a public String, which implements loose coupling. 
+This allows the name to be set using the setter method, rather than accessing it directly. This allows it to be easier to understand what each module does, and also
+makes it easier to modify modules if needed because it will not affect other modules.
+
+Q4.
+
+The purpose of the MyReader class is to read the resource, however it contains code that is unncessary to this function which is bad coding practice. The beginning of the
+class contains code that checks the FTP and ping, which is unrelated to the read and should be in a different class. To make the code more effiecient and have better 
+implementation, it should be rewritten like this:
+
+class MyReader {
+
+    // read the resource from disk
+    public String readFromDisk(String fileName) {
+         return "data of " + fileName;
+    }
+
+    // read the resource from web
+    public String readFromWeb(String url) {
+         return "data of " + url;
+    }
+
+    // read the resource from network
+    public String readFromNetwork(String networkAddress) {
+         return "data of " + networkAddress;
+    }
+
+}
+
+class checker() {
+
+ public boolean validateLocation(String pathIP) {
+         return ping(pathIP) && checkFTP(pathIP);
+    }
+    private boolean checkFTP(String pathIP) {
+         return true;
+    }
+
+    private boolean ping(String pathIP) {
+          return true;
+    }
+}
